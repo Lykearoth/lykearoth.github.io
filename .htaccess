@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^detail-page/([0-9]+)/?$ index.html?id=$1 [QSA,L]
+
+RewriteEngine On
+
+# Redirect homepage URL with "index.html" to just "/"
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)index\.html [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Redirect "blog-single.html" URL to "/blog-single"
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)blog-single\.html [NC]
+RewriteRule ^ %1blog-single [R=301,L]
+
+# Remove ".html" extension from all URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
