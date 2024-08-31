@@ -1,1 +1,1 @@
-Theme Name: Kearorh Ly
+Theme Name: Kearoth Ly
