@@ -155,3 +155,35 @@ $(window).load(function(){
   });
 
 })
+
+function doPost(e) {
+  try {
+    // Get form data
+    const name = e.parameter.name || '';
+    const email = e.parameter.email || '';
+    const subject = e.parameter.subject || ''; // Changed from website to subject
+    const message = e.parameter.message || '';
+
+    // Open your Google Sheet (replace SHEET_ID with your actual Sheet ID)
+    const SHEET_ID = 'YOUR_SHEET_ID_HERE'; // e.g., '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+    const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
+
+    // Append row to Sheet (columns: Timestamp, Name, Email, Subject, Message)
+    sheet.appendRow([new Date(), name, email, subject, message]);
+
+    // Send email notification
+    MailApp.sendEmail({
+      to: 'lykearoth@gmail.com', // Replace with your email
+      subject: 'New Comment on Your Blog: ' + subject, // Include subject in email subject
+      body: `New comment from ${name} (${email}):\n\nSubject: ${subject || 'N/A'}\nMessage: ${message}\n\nDate: ${new Date().toISOString()}`
+    });
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: 'success', message: 'Thank you! Your message has been sent.' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: 'error', message: 'Failed to submit. Please try again.' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
