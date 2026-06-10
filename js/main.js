@@ -1,13 +1,10 @@
 /*global $, jQuery, alert*/
 $(document).ready(function() {
-
   'use strict';
 
   // ========================================================================= //
-  //  //SMOOTH SCROLL
+  // SMOOTH SCROLL
   // ========================================================================= //
-
-
   $(document).on("scroll", onScroll);
 
   $('a[href^="#"]').on('click', function(e) {
@@ -27,6 +24,7 @@ $(document).ready(function() {
         menu = target;
 
     target = $(target);
+
     $('html, body').stop().animate({
       'scrollTop': target.offset().top - 80
     }, 500, 'swing', function() {
@@ -34,7 +32,6 @@ $(document).ready(function() {
       $(document).on("scroll", onScroll);
     });
   });
-
 
   function onScroll(event) {
     if ($('.home').length) {
@@ -47,13 +44,11 @@ $(document).ready(function() {
   }
 
   // ========================================================================= //
-  //  //NAVBAR SHOW - HIDE
+  // NAVBAR SHOW - HIDE
   // ========================================================================= //
-
-
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
-    if (scroll > 200 ) {
+    if (scroll > 200) {
       $("#main-nav, #main-nav-subpage").slideDown(700);
       $("#main-nav-subpage").removeClass('subpage-nav');
     } else {
@@ -64,19 +59,16 @@ $(document).ready(function() {
   });
 
   // ========================================================================= //
-  //  // RESPONSIVE MENU
+  // RESPONSIVE MENU
   // ========================================================================= //
-
   $('.responsive').on('click', function(e) {
     $('.nav-menu').slideToggle();
   });
 
   // ========================================================================= //
-  //  Typed Js
+  // Typed Js
   // ========================================================================= //
-
   var typed = $(".typed");
-
   $(function() {
     typed.typed({
       strings: ["KeaRoth Ly.", "Designer.", "Developer.", "Freelancer.", "Photographer", "IT Technician"],
@@ -85,96 +77,81 @@ $(document).ready(function() {
     });
   });
 
-
   // ========================================================================= //
-  //  Owl Carousel Services
+  // Owl Carousel Services
   // ========================================================================= //
-
-
   $('.services-carousel').owlCarousel({
-      autoplay: true,
-      loop: true,
-      margin: 20,
-      dots: true,
-      nav: false,
-      responsiveClass: true,
-      responsive: { 0: { items: 1 }, 768: { items: 2 }, 900: { items: 4 } }
-    });
+    autoplay: true,
+    loop: true,
+    margin: 20,
+    dots: true,
+    nav: false,
+    responsiveClass: true,
+    responsive: { 
+      0: { items: 1 }, 
+      768: { items: 2 }, 
+      900: { items: 4 } 
+    }
+  });
 
   // ========================================================================= //
-  //  magnificPopup
+  // Magnific Popup - Multi Image Gallery per Project
   // ========================================================================= //
-
-  var magnifPopup = function() {
-    $('.popup-img').magnificPopup({
-      type: 'image',
-      removalDelay: 300,
-      mainClass: 'mfp-with-zoom',
-      gallery: {
-        enabled: true
-      },
-      zoom: {
-        enabled: true, // By default it's false, so don't forget to enable it
-
-        duration: 300, // duration of the effect, in milliseconds
-        easing: 'ease-in-out', // CSS transition easing function
-
-        // The "opener" function should return the element from which popup will be zoomed in
-        // and to which popup will be scaled down
-        // By defailt it looks for an image tag:
-        opener: function(openerElement) {
-          // openerElement is the element on which popup was initialized, in this case its <a> tag
-          // you don't need to add "opener" option if this code matches your needs, it's defailt one.
-          return openerElement.is('img') ? openerElement : openerElement.find('img');
-        }
+  $('.popup-gallery').magnificPopup({
+    type: 'image',
+    removalDelay: 300,
+    mainClass: 'mfp-with-zoom',
+    gallery: {
+      enabled: true,
+      navigateByImgClick: true,
+      preload: [0, 1]
+    },
+    zoom: {
+      enabled: true,
+      duration: 300,
+      easing: 'ease-in-out',
+      opener: function(openerElement) {
+        return openerElement.is('img') ? openerElement : openerElement.find('img');
       }
+    }
+  });
+
+  // ========================================================================= //
+  // Portfolio Isotope + Filter
+  // ========================================================================= //
+  $(window).on('load', function() {
+    var portfolioIsotope = $('.portfolio-container').isotope({
+      itemSelector: '.portfolio-thumbnail',
+      layoutMode: 'fitRows'
     });
-  };
 
-
-  // Call the functions
-  magnifPopup();
+    $('#portfolio-flters li').on('click', function() {
+      $("#portfolio-flters li").removeClass('filter-active');
+      $(this).addClass('filter-active');
+      portfolioIsotope.isotope({ filter: $(this).data('filter') });
+    });
+  });
 
 });
 
 // ========================================================================= //
-//  Porfolio isotope and filter
+// Google Form / Contact Submission (unchanged)
 // ========================================================================= //
-$(window).load(function(){
-
-  var portfolioIsotope = $('.portfolio-container').isotope({
-    itemSelector: '.portfolio-thumbnail',
-    layoutMode: 'fitRows'
-  });
-
-  $('#portfolio-flters li').on( 'click', function() {
-    $("#portfolio-flters li").removeClass('filter-active');
-    $(this).addClass('filter-active');
-
-    portfolioIsotope.isotope({ filter: $(this).data('filter') });
-  });
-
-})
-
 function doPost(e) {
   try {
-    // Get form data
     const name = e.parameter.name || '';
     const email = e.parameter.email || '';
-    const subject = e.parameter.subject || ''; // Changed from website to subject
+    const subject = e.parameter.subject || '';
     const message = e.parameter.message || '';
 
-    // Open your Google Sheet (replace SHEET_ID with your actual Sheet ID)
-    const SHEET_ID = 'YOUR_SHEET_ID_HERE'; // e.g., '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+    const SHEET_ID = 'YOUR_SHEET_ID_HERE'; // ← Change this
     const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
-    // Append row to Sheet (columns: Timestamp, Name, Email, Subject, Message)
     sheet.appendRow([new Date(), name, email, subject, message]);
 
-    // Send email notification
     MailApp.sendEmail({
-      to: 'lykearoth@gmail.com', // Replace with your email
-      subject: 'New Comment on Your Blog: ' + subject, // Include subject in email subject
+      to: 'lykearoth@gmail.com',
+      subject: 'New Comment on Your Blog: ' + subject,
       body: `New comment from ${name} (${email}):\n\nSubject: ${subject || 'N/A'}\nMessage: ${message}\n\nDate: ${new Date().toISOString()}`
     });
 
