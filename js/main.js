@@ -102,50 +102,59 @@ $(document).ready(function() {
     });
 
   // ========================================================================= //
-// Magnific Popup - Gallery per project
-// ========================================================================= //
-var magnifPopup = function() {
-  $('.popup-gallery').magnificPopup({
-    type: 'image',
-    removalDelay: 300,
-    mainClass: 'mfp-with-zoom',
-    gallery: {
-      enabled: true,
-      navigateByImgClick: true,
-      preload: [0, 1] // Preload 2 images
-    },
-    zoom: {
-      enabled: true,
-      duration: 300,
-      easing: 'ease-in-out',
-      opener: function(openerElement) {
-        return openerElement.is('img') ? openerElement : openerElement.find('img');
-      }
-    }
-  });
-};
+  //  magnificPopup
+  // ========================================================================= //
 
-// Call after document ready
-$(document).ready(function() {
-  // ... your existing code ...
+  var magnifPopup = function() {
+    $('.popup-img').magnificPopup({
+      type: 'image',
+      removalDelay: 300,
+      mainClass: 'mfp-with-zoom',
+      gallery: {
+        enabled: true
+      },
+      zoom: {
+        enabled: true, // By default it's false, so don't forget to enable it
+
+        duration: 300, // duration of the effect, in milliseconds
+        easing: 'ease-in-out', // CSS transition easing function
+
+        // The "opener" function should return the element from which popup will be zoomed in
+        // and to which popup will be scaled down
+        // By defailt it looks for an image tag:
+        opener: function(openerElement) {
+          // openerElement is the element on which popup was initialized, in this case its <a> tag
+          // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+          return openerElement.is('img') ? openerElement : openerElement.find('img');
+        }
+      }
+    });
+  };
+
+
+  // Call the functions
   magnifPopup();
+
 });
 
 // ========================================================================= //
-// Portfolio Isotope + Filter (updated selector)
+//  Porfolio isotope and filter
 // ========================================================================= //
-$(window).on('load', function(){
+$(window).load(function(){
+
   var portfolioIsotope = $('.portfolio-container').isotope({
     itemSelector: '.portfolio-thumbnail',
     layoutMode: 'fitRows'
   });
 
-  $('#portfolio-flters li').on('click', function() {
+  $('#portfolio-flters li').on( 'click', function() {
     $("#portfolio-flters li").removeClass('filter-active');
     $(this).addClass('filter-active');
+
     portfolioIsotope.isotope({ filter: $(this).data('filter') });
   });
-});
+
+})
 
 function doPost(e) {
   try {
