@@ -201,90 +201,99 @@ and simplifying technical concepts.</p>
 
 
   <!-- start section portfolio -->
-  <div id="portfolio" class="text-center paddsection">
-
-    <div class="container">
-      <div class="section-title text-center">
-        <h2>My Portfolio</h2>
-      </div>
+ <div id="portfolio" class="text-center paddsection">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>My Portfolio</h2>
     </div>
+  </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="portfolio-list">
+          <ul class="nav list-unstyled" id="portfolio-flters">
+            <li class="filter filter-active" data-filter="*">All</li>
+            <li class="filter" data-filter=".branding">IT Projects</li>
+            <li class="filter" data-filter=".mockups">Infrastructure</li>
+            <li class="filter" data-filter=".uikits">Networking</li>
+            <li class="filter" data-filter=".webdesign">Digital Media</li>
+            <li class="filter" data-filter=".photography">Photography</li>
+            <li class="filter" data-filter=".operations">Operations</li>
+          </ul>
+        </div>
 
-          <div class="portfolio-list">
-
-            <ul class="nav list-unstyled" id="portfolio-flters">
-              <li class="filter filter-active" data-filter=".all">all</li>
-              <li class="filter" data-filter=".branding">IT Projects</li>
-              <li class="filter" data-filter=".mockups">Infrastructure</li>
-              <li class="filter" data-filter=".uikits">Networking</li>
-              <li class="filter" data-filter=".webdesign">Digital Media</li>
-              <li class="filter" data-filter=".photography">Photography</li>
-              <li class="filter" data-filter=".photography">Operations</li>
-            </ul>
-
+        <div class="portfolio-container row">
+          
+          <!-- Project 1 -->
+          <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits webdesign">
+            <div class="portfolio-item">
+              <a href="images/portfolio/10.jpg" class="popup-gallery" data-gallery="project1">
+                <img src="images/portfolio/10.jpg" alt="IT Project 1">
+                <div class="portfolio-overlay">
+                  <h4>IT System Redesign</h4>
+                  <p>Branding • UI/UX • Web</p>
+                </div>
+              </a>
+              <!-- Hidden images for gallery -->
+              <a href="images/portfolio/1.jpg" class="popup-gallery" data-gallery="project1" style="display:none;"></a>
+              <a href="images/portfolio/8.jpg" class="popup-gallery" data-gallery="project1" style="display:none;"></a>
+              <a href="images/portfolio/6.jpg" class="popup-gallery" data-gallery="project1" style="display:none;"></a>
+            </div>
           </div>
 
-          <div class="portfolio-container">
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits webdesign">
-              <a class="popup-img" href="images/portfolio/1.jpg">
-                <img src="images/portfolio/10.jpg" alt="img">
+          <!-- Project 2 -->
+          <div class="col-lg-4 col-md-6 portfolio-thumbnail all photography">
+            <div class="portfolio-item">
+              <a href="images/portfolio/7.jpg" class="popup-gallery" data-gallery="project2">
+                <img src="images/portfolio/7.jpg" alt="Photography Project">
+                <div class="portfolio-overlay">
+                  <h4>Urban Photography Series</h4>
+                  <p>Photography</p>
+                </div>
               </a>
+              <a href="images/portfolio/2.jpg" class="popup-gallery" data-gallery="project2" style="display:none;"></a>
+              <a href="images/portfolio/9.jpg" class="popup-gallery" data-gallery="project2" style="display:none;"></a>
+              <a href="images/portfolio/11.jpg" class="popup-gallery" data-gallery="project2" style="display:none;"></a>
             </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits webdesign">
-              <a class="popup-img" href="images/portfolio/1.jpg">
-                <img src="images/portfolio/8.jpg" alt="img">
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all photography">
-              <a class="popup-img" href="images/portfolio/2.jpg">
-                <img src="images/portfolio/7.jpg"  alt="img">
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits photographyn">
-              <a class="popup-img" href="images/portfolio/3.jpg">
-                <img src="images/portfolio/3.jpg" alt="img">
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all photography">
-              <a class="popup-img" href="images/portfolio/4.jpg">
-                <img src="images/portfolio/9.jpg" alt="img">
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all photography">
-              <a class="popup-img" href="images/portfolio/5.jpg">
-                <img src="images/portfolio/11.jpg" alt="img">
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups">
-              <a class="popup-img" href="images/portfolio/5.jpg">
-                 <img src="images/portfolio/6.jpg" alt="img">
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups uikits webdesign">
-              <a class="popup-img" href="images/portfolio/6.jpg">
-                <img src="images/portfolio/6.jpg" alt="img">
-              </a>
-
-              
-            </div>
-
           </div>
+
+          <!-- Project 3 -->
+          <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits">
+            <div class="portfolio-item">
+              <a href="images/portfolio/3.jpg" class="popup-gallery" data-gallery="project3">
+                <img src="images/portfolio/3.jpg" alt="Branding Project">
+                <div class="portfolio-overlay">
+                  <h4>Corporate Identity</h4>
+                  <p>Branding • UI Kit</p>
+                </div>
+              </a>
+              <!-- Add more images as needed -->
+            </div>
+          </div>
+
+          <!-- Add more projects following the same pattern -->
+          <!-- Project 4 -->
+          <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups">
+            <div class="portfolio-item">
+              <a href="images/portfolio/6.jpg" class="popup-gallery" data-gallery="project4">
+                <img src="images/portfolio/6.jpg" alt="Infrastructure">
+                <div class="portfolio-overlay">
+                  <h4>Infrastructure Dashboard</h4>
+                  <p>Mockups • Infrastructure</p>
+                </div>
+              </a>
+              <!-- hidden images here -->
+            </div>
+          </div>
+
+          <!-- You can continue adding more projects with unique data-gallery IDs -->
+
         </div>
       </div>
     </div>
-
   </div>
+</div>
   <!-- End section portfolio -->
 
 
