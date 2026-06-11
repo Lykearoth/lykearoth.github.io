@@ -178,7 +178,7 @@ $(document).ready(function() {
     $submitBtn.val('Sending...').prop('disabled', true);
 
     $.ajax({
-      url: 'https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec',  // ← Change this
+      url: 'https://script.google.com/macros/s/AKfycbz_ojYeAL5Z4Hy5axk5kpEzUhzledz5S-ytWY4-ym92ym1jSxT9GUkMmL_PDmqnW-zNiQ/exec',  // ← Change this
       type: 'POST',
       data: $form.serialize(),
       success: function(response) {
