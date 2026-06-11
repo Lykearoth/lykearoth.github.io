@@ -144,7 +144,7 @@ function doPost(e) {
     const subject = e.parameter.subject || '';
     const message = e.parameter.message || '';
 
-    const SHEET_ID = 'YOUR_SHEET_ID_HERE'; // ← Change this
+    const SHEET_ID = '1KfkafL3kH0lQYg2IW1rvCOFP3cQ9yGL616byJmkmdxA'; // ← Change this
     const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
     sheet.appendRow([new Date(), name, email, subject, message]);
@@ -178,7 +178,7 @@ $(document).ready(function() {
     $submitBtn.val('Sending...').prop('disabled', true);
 
     $.ajax({
-      url: 'https://script.google.com/macros/s/AKfycbz_ojYeAL5Z4Hy5axk5kpEzUhzledz5S-ytWY4-ym92ym1jSxT9GUkMmL_PDmqnW-zNiQ/exec',  // ← Change this
+      url: 'https://script.google.com/macros/s/AKfycbzZpXi7RXudCn4rAMIGo6Dr4p8X2ZchtdqDDOi_fbhyCRFdwmb0LoBBZdo5LSgNf_Nhgw/exec',  // ← Change this
       type: 'POST',
       data: $form.serialize(),
       success: function(response) {
