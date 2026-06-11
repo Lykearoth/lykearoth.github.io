@@ -164,3 +164,34 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
+// ========================================================================= //
+// Contact Form - Google Apps Script Integration
+// ========================================================================= //
+$(document).ready(function() {
+  $('#contactForm').on('submit', function(e) {
+    e.preventDefault();
+
+    var $form = $(this);
+    var $submitBtn = $form.find('input[type="submit"]');
+    var originalBtnText = $submitBtn.val();
+
+    $submitBtn.val('Sending...').prop('disabled', true);
+
+    $.ajax({
+      url: 'https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec',  // ← Change this
+      type: 'POST',
+      data: $form.serialize(),
+      success: function(response) {
+        $('#sendmessage').fadeIn();
+        $('#errormessage').hide();
+        $form[0].reset();
+      },
+      error: function() {
+        $('#errormessage').text('Something went wrong. Please try again.').fadeIn();
+      },
+      complete: function() {
+        $submitBtn.val(originalBtnText).prop('disabled', false);
+      }
+    });
+  });
+});
