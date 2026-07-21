@@ -386,8 +386,11 @@ nav ul li a {
 /*-----------------------------------------------------------------------------------*/
 /* Available-now - Modern Pill Style */
 /*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/* Available-now - Compact & Responsive */
+/*-----------------------------------------------------------------------------------*/
 .available-now {
-  margin-top: 20px;
+  margin-top: 18px;
   margin-bottom: 25px;
   display: inline-flex;
   align-items: center;
@@ -399,7 +402,7 @@ nav ul li a {
   color: #00cc77;
   font-weight: 600;
   font-size: 15px;
-  max-width: 320px;           /* ← This controls the maximum width */
+  max-width: 320px;           /* Controls max width */
   width: fit-content;
   white-space: nowrap;
   box-shadow: 0 4px 15px rgba(0, 204, 119, 0.2);
@@ -419,6 +422,7 @@ nav ul li a {
   font-size: 15px;
 }
 
+/* Hover Effect */
 .available-now:hover {
   background: rgba(0, 255, 136, 0.2);
   transform: scale(1.03);
@@ -431,16 +435,34 @@ nav ul li a {
   100% { box-shadow: 0 0 0 0 rgba(0, 204, 119, 0); }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+/* ====================== MOBILE RESPONSIVE ====================== */
+@media (max-width: 992px) {
   .available-now {
-    padding: 10px 20px;
-    font-size: 14px;
-    max-width: 280px;
+    max-width: 300px;
   }
 }
 
+@media (max-width: 768px) {
+  .available-now {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 14.5px;
+    max-width: 280px;
+  }
+  
+  .available-now .available-text {
+    font-size: 14.5px;
+  }
+}
 
+@media (max-width: 480px) {
+  .available-now {
+    padding: 9px 18px;
+    max-width: 260px;
+    font-size: 14px;
+  }
+}
 
 /*-----------------------------------------------------------------------------------*/
 /*  Portfolio
