@@ -388,6 +388,7 @@ nav ul li a {
 /*-----------------------------------------------------------------------------------*/
 .available-now {
   margin-top: 20px;
+  margin-bottom: 25px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
