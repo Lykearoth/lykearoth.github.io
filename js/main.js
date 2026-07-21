@@ -138,18 +138,18 @@ $(document).ready(function() {
 // Tracking viewer
 // ========================================================================= //
 
-// Simple visitor counter using localStorage + fake increment (for demo)
-// For real count, use a free service like https://www.free-counter.com/
-let count = localStorage.getItem('visitorCount') || 1248;
+let visitorCount = localStorage.getItem('portfolioVisitorCount') || 1284;
 
-function updateVisitorCount() {
-  count = parseInt(count) + 1;
-  localStorage.setItem('visitorCount', count);
-  document.getElementById('visitor-count').textContent = count.toLocaleString();
-}
+    function updateVisitorCount() {
+      const countElement = document.getElementById('visitor-count');
+      let current = parseInt(visitorCount);
+      countElement.textContent = current.toLocaleString('en-US');
+      
+      visitorCount = current + Math.floor(Math.random() * 3) + 1;
+      localStorage.setItem('portfolioVisitorCount', visitorCount);
+    }
 
-// Update on page load
-updateVisitorCount();
+    window.addEventListener('load', updateVisitorCount);
 
 // ========================================================================= //
 // Google Form / Contact Submission (unchanged)
