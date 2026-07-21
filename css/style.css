@@ -387,7 +387,7 @@ nav ul li a {
 /* Available-now - Modern Pill Style */
 /*-----------------------------------------------------------------------------------*/
 .available-now {
-  margin-top: 20px;
+  margin-top: 200px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
