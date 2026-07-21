@@ -440,25 +440,8 @@ nav ul li a {
   }
 }
 
-/*-----------------------------------------------------------------------------------*/
-/* Mobile adjustments for Visitor Counter
-/*-----------------------------------------------------------------------------------*/
 
-@media (max-width: 768px) {
-  .visitor-box {
-    padding: 25px 20px;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-  
-  .visitor-count {
-    font-size: 42px;
-  }
-  
-  .visitor-label {
-    font-size: 15px;
-  }
-}
+
 /*-----------------------------------------------------------------------------------*/
 /*  Portfolio
 /*-----------------------------------------------------------------------------------*/
@@ -644,6 +627,22 @@ nav ul li a {
   0% { box-shadow: 0 0 0 0 rgba(0, 119, 196, 0.7); }
   70% { box-shadow: 0 0 0 12px rgba(0, 119, 196, 0); }
   100% { box-shadow: 0 0 0 0 rgba(0, 119, 196, 0); }
+}
+
+@media (max-width: 768px) {
+  .visitor-box {
+    padding: 25px 20px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .visitor-count {
+    font-size: 42px;
+  }
+  
+  .visitor-label {
+    font-size: 15px;
+  }
 }
 
 
