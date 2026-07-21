@@ -391,7 +391,7 @@ nav ul li a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 11px 2px;
+  padding: 11px 24px;
   background: rgba(0, 255, 136, 0.12);
   border: 1px solid #00ff88;
   border-radius: 50px;
