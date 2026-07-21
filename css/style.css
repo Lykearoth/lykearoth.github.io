@@ -570,17 +570,16 @@ nav ul li a {
 
 
 /* ====================== VISITOR COUNTER ====================== */
+/* ====================== VISITOR COUNTER ====================== */
 #visitor-counter {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 50px 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  padding: 45px 0;
 }
 
 .visitor-box {
   background: white;
-  border-radius: 12px;
-  padding: 35px 40px;
+  border-radius: 16px;
+  padding: 32px 40px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   max-width: 420px;
   margin: 0 auto;
@@ -592,25 +591,23 @@ nav ul li a {
   font-size: 52px;
   font-weight: 700;
   color: #292929;
-  margin: 12px 0 8px 0;
+  margin: 10px 0 8px 0;
   font-family: 'Poppins', sans-serif;
-  letter-spacing: -1px;
 }
 
 .visitor-label {
   color: #555;
   font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0.5px;
 }
 
 .status-live {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   color: #0077C4;
   font-size: 14.5px;
-  margin-top: 15px;
+  margin-top: 12px;
   font-weight: 500;
 }
 
@@ -620,20 +617,18 @@ nav ul li a {
   background: #0077C4;
   border-radius: 50%;
   animation: pulse 2s infinite;
-  box-shadow: 0 0 0 0 rgba(0, 119, 196, 0.7);
 }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(0, 119, 196, 0.7); }
-  70% { box-shadow: 0 0 0 12px rgba(0, 119, 196, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 119, 196, 0); }
-}
-
+/* ==================== MOBILE RESPONSIVE ==================== */
 @media (max-width: 768px) {
+  #visitor-counter {
+    padding: 35px 0;
+  }
+  
   .visitor-box {
     padding: 25px 20px;
-    max-width: 90%;
-    margin: 0 auto;
+    max-width: 92%;
+    border-radius: 12px;
   }
   
   .visitor-count {
@@ -643,8 +638,17 @@ nav ul li a {
   .visitor-label {
     font-size: 15px;
   }
+  
+  .status-live {
+    font-size: 14px;
+  }
 }
 
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 119, 196, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(0, 119, 196, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 119, 196, 0); }
+}
 
 /*-----------------------------------------------------------------------------------*/
 /*  Contact
