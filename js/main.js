@@ -135,6 +135,23 @@ $(document).ready(function() {
 });
 
 // ========================================================================= //
+// Tracking viewer
+// ========================================================================= //
+
+// Simple visitor counter using localStorage + fake increment (for demo)
+// For real count, use a free service like https://www.free-counter.com/
+let count = localStorage.getItem('visitorCount') || 1248;
+
+function updateVisitorCount() {
+  count = parseInt(count) + 1;
+  localStorage.setItem('visitorCount', count);
+  document.getElementById('visitor-count').textContent = count.toLocaleString();
+}
+
+// Update on page load
+updateVisitorCount();
+
+// ========================================================================= //
 // Google Form / Contact Submission (unchanged)
 // ========================================================================= //
 function doPost(e) {
