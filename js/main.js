@@ -139,21 +139,15 @@ $(document).ready(function() {
 // ========================================================================= //
 
 // Only increment once per visit (more stable)
-  if (!sessionStorage.getItem('hasVisited')) {
-    let count = parseInt(localStorage.getItem('portfolioVisitorCount') || 1284);
-    count += 1; // Increase by 1 only
-    localStorage.setItem('portfolioVisitorCount', count);
-    sessionStorage.setItem('hasVisited', 'true'); // Prevent multiple increases on same visit
-  }
+ // Simple and reliable visitor counter
+  let count = parseInt(localStorage.getItem('portfolioVisitorCount') || 1284);
+  
+  // Increase by 1 on every page load / refresh
+  count += 1;
+  localStorage.setItem('portfolioVisitorCount', count);
 
-  // Display the count
-  function displayCount() {
-    const countElement = document.getElementById('visitor-count');
-    const savedCount = localStorage.getItem('portfolioVisitorCount') || 1284;
-    countElement.textContent = parseInt(savedCount).toLocaleString('en-US');
-  }
-
-  window.addEventListener('load', displayCount);
+  // Display the updated count
+  document.getElementById('visitor-count').textContent = count.toLocaleString('en-US');
 
 // ========================================================================= //
 // Google Form / Contact Submission (unchanged)
