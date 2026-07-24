@@ -502,67 +502,133 @@ nav ul li a {
 /*  Journal
 /*-----------------------------------------------------------------------------------*/
 
-#journal,  #journal-blog {
-  height: auto;
-  width: 100%;
-  background: #f7f7f7;
-  padding-bottom: 60px;
-  position: relative;
+/* Minimal Premium Continuous Slider */
+.journey-slider-wrapper {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-#journal-blog {
-  background: #fff;
-  padding-bottom: 30px;
+.journey-slider-container {
+    position: relative;
+    height: 620px;
+    overflow: hidden;
 }
 
-#journal .journal-block {
-  display: inline-block;
-  height: auto;
-  width: 100%;
+.journey-slides-track {
+    display: flex;
+    height: 100%;
+    gap: 24px;
+    will-change: transform;
+    transition: transform 0.08s linear;
 }
 
-#journal .journal-block .journal-info {
-  position: relative;
+.journey-slide {
+    position: relative;
+    width: 310px;
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+    transition: all 0.4s ease;
 }
 
-.journal-block .journal-info img {
-  max-width: 100%;
+.journey-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s ease;
 }
 
-.journal-block .journal-info .journal-txt {
-  padding: 25px 0px;
-  position: relative;
+.journey-slide:hover img {
+    transform: scale(1.08);
 }
 
-.journal-block .journal-info .journal-txt h4 a {
-  display: block;
-  font-size: 19px;
-  line-height: 24px;
-  margin: 0 0 13px 0;
-  font-weight: 500;
-  color: #292929;
-  -moz-transition: all 0.5s ease-in-out 0s;
-  -ms-transition: all 0.5s ease-in-out 0s;
-  -o-transition: all 0.5s ease-in-out 0s;
-  -webkit-transition: all 0.5s ease-in-out 0s;
-  transition: all 0.5s ease-in-out 0s;
+/* Overlay */
+.journey-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(9,9,11,0.9) 30%, rgba(9,9,11,0.25) 75%, transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 42px 32px 38px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
 }
 
-.journal-block .journal-info .journal-txt h4 a:hover {
-  color: #0077C4;
-  -moz-transition: all 0.5s ease-in-out 0s;
-  -ms-transition: all 0.5s ease-in-out 0s;
-  -o-transition: all 0.5s ease-in-out 0s;
-  -webkit-transition: all 0.5s ease-in-out 0s;
-  transition: all 0.5s ease-in-out 0s;
+.journey-slide:hover .journey-slide-overlay {
+    opacity: 1;
 }
 
-.journal-block .journal-info .journal-txt p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
+.journey-category {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #60A5FA;
+    margin-bottom: 8px;
 }
 
+.journey-slide-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.journey-slide-desc {
+    font-size: 1.05rem;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+}
+
+.journey-slide-meta {
+    color: #a1b4d0;
+    font-size: 1rem;
+}
+
+/* Center Highlight */
+.journey-slide.center {
+    transform: scale(1.07);
+    z-index: 10;
+    box-shadow: 0 30px 60px -10px rgba(96, 165, 250, 0.4);
+}
+
+/* Navigation Buttons */
+.journey-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 66px;
+    height: 66px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.journey-nav-btn:hover {
+    background: rgba(255,255,255,0.22);
+    transform: translateY(-50%) scale(1.12);
+}
+
+.journey-prev-btn { left: 40px; }
+.journey-next-btn { right: 40px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .journey-slider-container { height: 480px; }
+    .journey-slide { width: calc(100vw - 60px); }
+}
 
 /* ====================== VISITOR COUNTER ====================== */
 /* ====================== VISITOR COUNTER ====================== */
