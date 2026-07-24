@@ -651,7 +651,7 @@ nav ul li a {
     font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 2px;
-    color: #60A5FA;
+    color: #f4f4f4;
     margin-bottom: 8px;
 }
 
@@ -669,7 +669,7 @@ nav ul li a {
 }
 
 .journey-slide-meta {
-    color: #a1b4d0;
+    color: #f4f4f4;
     font-size: 1rem;
 }
 
