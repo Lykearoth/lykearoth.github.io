@@ -199,9 +199,9 @@ const journeyStories = [
 function initMinimalJourneySlider() {
     const track = document.getElementById('journey-slides-track');
     track.innerHTML = '';
-    
+
     const extended = [...journeyStories, ...journeyStories, ...journeyStories];
-    
+
     extended.forEach(item => {
         const slide = document.createElement('div');
         slide.className = 'journey-slide';
@@ -219,6 +219,7 @@ function initMinimalJourneySlider() {
 
     let currentTranslateX = 0;
     let isPaused = false;
+
     const container = document.getElementById('journey-slider-container');
 
     function animate() {
@@ -226,10 +227,12 @@ function initMinimalJourneySlider() {
             currentTranslateX -= 0.45;
             track.style.transform = `translateX(${currentTranslateX}px)`;
         }
+
         // Seamless loop
         if (Math.abs(currentTranslateX) > 310 * journeyStories.length * 2) {
             currentTranslateX += 310 * journeyStories.length * 2;
         }
+
         requestAnimationFrame(animate);
     }
 
