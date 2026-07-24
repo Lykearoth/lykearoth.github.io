@@ -584,8 +584,6 @@ nav ul li a {
 /*-----------------------------------------------------------------------------------*/
 /*  Journal
 /*-----------------------------------------------------------------------------------*/
-
-
 /* Minimal Premium Continuous Slider */
 .journey-slider-wrapper {
     position: relative;
@@ -633,7 +631,7 @@ nav ul li a {
 .journey-slide-overlay {
     position: absolute;
     inset: 0;
-    background: #f4f4f4;
+    background: linear-gradient(to top, rgba(9,9,11,0.9) 30%, rgba(9,9,11,0.25) 75%, transparent);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -651,7 +649,7 @@ nav ul li a {
     font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 2px;
-    color: #f4f4f4;
+    color: #60A5FA;
     margin-bottom: 8px;
 }
 
@@ -664,12 +662,12 @@ nav ul li a {
 
 .journey-slide-desc {
     font-size: 1.05rem;
-    color: #f4f4f4;
+    color: #e2e8f0;
     margin-bottom: 12px;
 }
 
 .journey-slide-meta {
-    color: #f4f4f4;
+    color: #a1b4d0;
     font-size: 1rem;
 }
 
