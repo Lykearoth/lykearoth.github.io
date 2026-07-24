@@ -152,7 +152,116 @@ $(document).ready(function() {
 // ========================================================================= //
 // Journal
 // ========================================================================= //
+<script>
+// Journey Slider Data
+const journeyStories = [
+    {
+        category: "COMMUNITY",
+        title: "Giving Back",
+        desc: "Supporting education and outreach programs in rural villages.",
+        location: "Battambang",
+        year: "2024",
+        img: "https://picsum.photos/id/1015/800/1000"
+    },
+    {
+        category: "MEDIA PRODUCTION",
+        title: "Capturing Stories",
+        desc: "Documenting meaningful moments through photography and video.",
+        location: "Siem Reap",
+        year: "2025",
+        img: "https://picsum.photos/id/133/800/1000"
+    },
+    {
+        category: "TEACHING",
+        title: "Sharing Knowledge",
+        desc: "Helping students learn technology and digital skills.",
+        location: "Phnom Penh",
+        year: "2026",
+        img: "https://picsum.photos/id/201/800/1000"
+    },
+    {
+        category: "FIELD WORK",
+        title: "Village Outreach",
+        desc: "Bringing technology and opportunity to remote communities.",
+        location: "Kampong Cham",
+        year: "2023",
+        img: "https://picsum.photos/id/251/800/1000"
+    },
+    {
+        category: "EVENT",
+        title: "Moments That Matter",
+        desc: "Capturing energy at conferences and community events.",
+        location: "Singapore",
+        year: "2025",
+        img: "https://picsum.photos/id/316/800/1000"
+    }
+];
 
+let currentTranslateX = 0;
+let isPaused = false;
+let animationFrame;
+
+function initJourneySlider() {
+    const track = document.getElementById('journey-slides-track');
+    track.innerHTML = '';
+
+    // Duplicate for seamless loop
+    const extended = [...journeyStories, ...journeyStories, ...journeyStories];
+
+    extended.forEach(item => {
+        const slide = document.createElement('div');
+        slide.className = 'journey-slide';
+        slide.innerHTML = `
+            <img src="${item.img}" alt="${item.title}" loading="lazy">
+            <div class="journey-slide-overlay">
+                <div class="journey-category">${item.category}</div>
+                <div class="journey-slide-title">${item.title}</div>
+                <div class="journey-slide-desc">${item.desc}</div>
+                <div class="journey-slide-meta">${item.location} • ${item.year}</div>
+            </div>
+        `;
+        track.appendChild(slide);
+    });
+
+    const container = document.getElementById('journey-slider-container');
+
+    function animate() {
+        if (!isPaused) {
+            currentTranslateX -= 0.45;
+            track.style.transform = `translateX(${currentTranslateX}px)`;
+        }
+        // Loop seamlessly
+        if (Math.abs(currentTranslateX) > 310 * journeyStories.length * 2) {
+            currentTranslateX += 310 * journeyStories.length * 2;
+        }
+        animationFrame = requestAnimationFrame(animate);
+    }
+
+    // Hover pause
+    container.addEventListener('mouseenter', () => isPaused = true);
+    container.addEventListener('mouseleave', () => isPaused = false);
+
+    // Navigation
+    document.getElementById('journey-prev-btn').addEventListener('click', () => {
+        currentTranslateX += 380;
+        track.style.transition = 'transform 0.6s cubic-bezier(0.32,0.72,0,1)';
+        track.style.transform = `translateX(${currentTranslateX}px)`;
+        setTimeout(() => track.style.transition = 'transform 0.08s linear', 600);
+    });
+
+    document.getElementById('journey-next-btn').addEventListener('click', () => {
+        currentTranslateX -= 380;
+        track.style.transition = 'transform 0.6s cubic-bezier(0.32,0.72,0,1)';
+        track.style.transform = `translateX(${currentTranslateX}px)`;
+        setTimeout(() => track.style.transition = 'transform 0.08s linear', 600);
+    });
+
+    requestAnimationFrame(animate);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initJourneySlider);
+</script>
 
 // ========================================================================= //
 // Google Form / Contact Submission (unchanged)
