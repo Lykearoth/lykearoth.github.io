@@ -593,7 +593,7 @@ nav ul li a {
 
 .journey-slider-container {
     position: relative;
-    height: 620px;
+    height: 550px;
     overflow: hidden;
 }
 
@@ -612,7 +612,7 @@ nav ul li a {
     border-radius: 28px;
     overflow: hidden;
     flex-shrink: 0;
-    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+    box-shadow: #f4f4f4;
     transition: all 0.4s ease;
 }
 
