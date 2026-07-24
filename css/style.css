@@ -680,11 +680,12 @@ nav ul li a {
   animation: pulse 2s infinite;
 }
 /*  */
-/* Premium Journey Slider */
+/* Minimal Premium Continuous Slider */
 .journey-slider-wrapper {
     position: relative;
-    margin: 0 auto;
+    max-width: 100%;
     overflow: hidden;
+    margin-top: 60px; /* Space between title and slider */
 }
 
 .journey-slider-container {
@@ -723,10 +724,11 @@ nav ul li a {
     transform: scale(1.08);
 }
 
+/* Overlay */
 .journey-slide-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(9,9,11,0.92) 35%, rgba(9,9,11,0.3) 70%, transparent);
+    background: linear-gradient(to top, rgba(9,9,11,0.9) 30%, rgba(9,9,11,0.25) 75%, transparent);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -766,13 +768,14 @@ nav ul li a {
     font-size: 1rem;
 }
 
+/* Center Highlight */
 .journey-slide.center {
     transform: scale(1.07);
     z-index: 10;
     box-shadow: 0 30px 60px -10px rgba(96, 165, 250, 0.4);
 }
 
-/* Navigation */
+/* Navigation Buttons */
 .journey-nav-btn {
     position: absolute;
     top: 50%;
@@ -800,9 +803,12 @@ nav ul li a {
 .journey-prev-btn { left: 40px; }
 .journey-next-btn { right: 40px; }
 
+/* Responsive */
 @media (max-width: 768px) {
-    .journey-slide { width: calc(100vw - 60px); }
     .journey-slider-container { height: 480px; }
+    .journey-slide { width: calc(100vw - 60px); }
+    .journey-prev-btn { left: 20px; }
+    .journey-next-btn { right: 20px; }
 }
 
 /* ==================== MOBILE RESPONSIVE ==================== */
