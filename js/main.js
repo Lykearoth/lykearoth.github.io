@@ -150,6 +150,59 @@ $(document).ready(function() {
   document.getElementById('visitor-count').textContent = count.toLocaleString('en-US');
 
 // ========================================================================= //
+// Journal
+// ========================================================================= //
+const articles = [
+    { id:1, category:"AI", title:"Automating Daily IT Threat Intelligence", excerpt:"Using LangChain + Gemini to deliver daily cybersecurity briefings.", date:"Jul 22", readTime:"9 min", image:"https://picsum.photos/id/201/800/600" },
+    { id:2, category:"Development", title:"Smart Face Attendance System", excerpt:"Final year project using facial recognition and real-time tracking.", date:"Jul 20", readTime:"12 min", image:"https://picsum.photos/id/237/800/600" },
+    { id:3, category:"Projects", title:"Flutter Todo App with Firebase", excerpt:"Real-time task management across platforms.", date:"Jul 18", readTime:"7 min", image:"https://picsum.photos/id/251/800/600" },
+    { id:4, category:"Operations", title:"Automated IT Ticketing System", excerpt:"Google Apps Script + Sheets automation for SLA tracking.", date:"Jul 15", readTime:"8 min", image:"https://picsum.photos/id/180/800/600" }
+];
+
+function renderArticles() {
+    const container = document.getElementById('articles-grid');
+    container.innerHTML = '';
+    
+    articles.forEach(article => {
+        container.innerHTML += `
+            <div onclick="readArticle(${article.id})" class="card-hover bg-[#111113] border border-white/10 rounded-3xl overflow-hidden cursor-pointer">
+                <img src="${article.image}" class="w-full h-52 object-cover" alt="">
+                <div class="p-6">
+                    <div class="flex justify-between text-xs mb-3 text-[#94A3B8]">
+                        <span>${article.category}</span>
+                        <span>${article.date} • ${article.readTime}</span>
+                    </div>
+                    <h4 class="font-semibold text-lg leading-tight mb-3">${article.title}</h4>
+                    <p class="text-[#94A3B8] text-sm line-clamp-3">${article.excerpt}</p>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function filterCategory(el) {
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    el.classList.add('active');
+    // Add real filtering logic here if needed
+    renderArticles();
+}
+
+function readArticle(id) {
+    alert("Article " + id + " opened.\n\n(You can link this to blog-single.html or open a modal)");
+}
+
+function readFeatured() {
+    alert("Opening featured article: Building the perfect component library in 2026");
+}
+
+// Initialize
+window.onload = function() {
+    if (document.getElementById('articles-grid')) {
+        renderArticles();
+    }
+};
+
+// ========================================================================= //
 // Google Form / Contact Submission (unchanged)
 // ========================================================================= //
 function doPost(e) {
