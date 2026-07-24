@@ -152,13 +152,12 @@ $(document).ready(function() {
 // ========================================================================= //
 // Journal
 // ========================================================================= //
-<script>
-// Journey Slider Data
+// Minimal Journey Slider
 const journeyStories = [
     {
         category: "COMMUNITY",
         title: "Giving Back",
-        desc: "Supporting education and outreach programs in rural villages.",
+        desc: "Supporting education and outreach in rural villages.",
         location: "Battambang",
         year: "2024",
         img: "https://picsum.photos/id/1015/800/1000"
@@ -166,7 +165,7 @@ const journeyStories = [
     {
         category: "MEDIA PRODUCTION",
         title: "Capturing Stories",
-        desc: "Documenting meaningful moments through photography and video.",
+        desc: "Documenting meaningful moments through photography.",
         location: "Siem Reap",
         year: "2025",
         img: "https://picsum.photos/id/133/800/1000"
@@ -182,7 +181,7 @@ const journeyStories = [
     {
         category: "FIELD WORK",
         title: "Village Outreach",
-        desc: "Bringing technology and opportunity to remote communities.",
+        desc: "Bringing tech opportunities to remote communities.",
         location: "Kampong Cham",
         year: "2023",
         img: "https://picsum.photos/id/251/800/1000"
@@ -190,22 +189,17 @@ const journeyStories = [
     {
         category: "EVENT",
         title: "Moments That Matter",
-        desc: "Capturing energy at conferences and community events.",
+        desc: "Capturing energy at conferences and gatherings.",
         location: "Singapore",
         year: "2025",
         img: "https://picsum.photos/id/316/800/1000"
     }
 ];
 
-let currentTranslateX = 0;
-let isPaused = false;
-let animationFrame;
-
-function initJourneySlider() {
+function initMinimalJourneySlider() {
     const track = document.getElementById('journey-slides-track');
     track.innerHTML = '';
 
-    // Duplicate for seamless loop
     const extended = [...journeyStories, ...journeyStories, ...journeyStories];
 
     extended.forEach(item => {
@@ -223,6 +217,9 @@ function initJourneySlider() {
         track.appendChild(slide);
     });
 
+    let currentTranslateX = 0;
+    let isPaused = false;
+
     const container = document.getElementById('journey-slider-container');
 
     function animate() {
@@ -230,11 +227,13 @@ function initJourneySlider() {
             currentTranslateX -= 0.45;
             track.style.transform = `translateX(${currentTranslateX}px)`;
         }
-        // Loop seamlessly
+
+        // Seamless loop
         if (Math.abs(currentTranslateX) > 310 * journeyStories.length * 2) {
             currentTranslateX += 310 * journeyStories.length * 2;
         }
-        animationFrame = requestAnimationFrame(animate);
+
+        requestAnimationFrame(animate);
     }
 
     // Hover pause
@@ -246,22 +245,21 @@ function initJourneySlider() {
         currentTranslateX += 380;
         track.style.transition = 'transform 0.6s cubic-bezier(0.32,0.72,0,1)';
         track.style.transform = `translateX(${currentTranslateX}px)`;
-        setTimeout(() => track.style.transition = 'transform 0.08s linear', 600);
+        setTimeout(() => { track.style.transition = 'transform 0.08s linear'; }, 600);
     });
 
     document.getElementById('journey-next-btn').addEventListener('click', () => {
         currentTranslateX -= 380;
         track.style.transition = 'transform 0.6s cubic-bezier(0.32,0.72,0,1)';
         track.style.transform = `translateX(${currentTranslateX}px)`;
-        setTimeout(() => track.style.transition = 'transform 0.08s linear', 600);
+        setTimeout(() => { track.style.transition = 'transform 0.08s linear'; }, 600);
     });
 
     requestAnimationFrame(animate);
 }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', initJourneySlider);
-</script>
+// Initialize
+document.addEventListener('DOMContentLoaded', initMinimalJourneySlider);
 
 // ========================================================================= //
 // Google Form / Contact Submission (unchanged)
