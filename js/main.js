@@ -152,9 +152,9 @@ $(document).ready(function() {
 // ========================================================================= //
 // Journal
 // ========================================================================= //
-// Minimal Journey Slider
+// Minimal Journey Slider – smooth infinite loop
 const journeyStories = [
-      {
+    {
         category: "TRAINING & CAPACITY BUILDING",
         title: "Social Media Product Marketing",
         desc: "Empowering local Community-Based Organizations (CBOs) with digital marketing, mobile photography, and social selling skills.",
@@ -198,8 +198,11 @@ const journeyStories = [
 
 function initMinimalJourneySlider() {
     const track = document.getElementById('journey-slides-track');
-    track.innerHTML = '';
+    const container = document.getElementById('journey-slider-container');
+    if (!track || !container) return;
 
+    // Clear & build three identical sets (enough for seamless left/right)
+    track.innerHTML = '';
     const extended = [...journeyStories, ...journeyStories, ...journeyStories];
 
     extended.forEach(item => {
@@ -217,49 +220,90 @@ function initMinimalJourneySlider() {
         track.appendChild(slide);
     });
 
-    let currentTranslateX = 0;
-    let isPaused = false;
+    // Measurements
+    const slideWidth = 310;          // must match CSS
+    const gap = 24;                  // must match CSS gap
+    const step = slideWidth + gap;   // one slide movement
+    const setWidth = step * journeyStories.length; // width of one full set
 
-    const container = document.getElementById('journey-slider-container');
+    // Start in the middle set so we can go both directions
+    let currentTranslateX = -setWidth;
+    let isPaused = false;
+    let isAnimating = false;
+
+    // Apply initial position (no transition)
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${currentTranslateX}px)`;
+
+    // Force reflow then restore smooth continuous transition
+    void track.offsetWidth;
+    track.style.transition = 'transform 0.08s linear';
+
+    function normalizePosition() {
+        // Keep the track inside the middle set
+        // When we go too far left → jump forward one set
+        // When we go too far right → jump backward one set
+        if (currentTranslateX <= -setWidth * 2) {
+            currentTranslateX += setWidth;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${currentTranslateX}px)`;
+            void track.offsetWidth; // reflow
+            track.style.transition = 'transform 0.08s linear';
+        } else if (currentTranslateX >= 0) {
+            currentTranslateX -= setWidth;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${currentTranslateX}px)`;
+            void track.offsetWidth;
+            track.style.transition = 'transform 0.08s linear';
+        }
+    }
 
     function animate() {
-        if (!isPaused) {
-            currentTranslateX -= 0.45;
+        if (!isPaused && !isAnimating) {
+            currentTranslateX -= 0.45; // continuous speed
             track.style.transform = `translateX(${currentTranslateX}px)`;
+            normalizePosition();
         }
-
-        // Seamless loop
-        if (Math.abs(currentTranslateX) > 310 * journeyStories.length * 2) {
-            currentTranslateX += 310 * journeyStories.length * 2;
-        }
-
         requestAnimationFrame(animate);
     }
 
     // Hover pause
-    container.addEventListener('mouseenter', () => isPaused = true);
-    container.addEventListener('mouseleave', () => isPaused = false);
+    container.addEventListener('mouseenter', () => { isPaused = true; });
+    container.addEventListener('mouseleave', () => { isPaused = false; });
 
-    // Navigation
-    document.getElementById('journey-prev-btn').addEventListener('click', () => {
-        currentTranslateX += 380;
-        track.style.transition = 'transform 0.6s cubic-bezier(0.32,0.72,0,1)';
+    // Navigation helpers
+    function moveBy(direction) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        // direction: -1 = next (left), +1 = prev (right)
+        currentTranslateX += direction * step * 1.2; // slightly more than one card for nice feel
+
+        track.style.transition = 'transform 0.55s cubic-bezier(0.32, 0.72, 0, 1)';
         track.style.transform = `translateX(${currentTranslateX}px)`;
-        setTimeout(() => { track.style.transition = 'transform 0.08s linear'; }, 600);
+
+        setTimeout(() => {
+            track.style.transition = 'transform 0.08s linear';
+            normalizePosition();
+            isAnimating = false;
+        }, 560);
+    }
+
+    document.getElementById('journey-prev-btn').addEventListener('click', () => {
+        moveBy(+1); // move right
     });
 
     document.getElementById('journey-next-btn').addEventListener('click', () => {
-        currentTranslateX -= 380;
-        track.style.transition = 'transform 0.6s cubic-bezier(0.32,0.72,0,1)';
-        track.style.transform = `translateX(${currentTranslateX}px)`;
-        setTimeout(() => { track.style.transition = 'transform 0.08s linear'; }, 600);
+        moveBy(-1); // move left
     });
 
+    // Start the continuous animation
     requestAnimationFrame(animate);
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', initMinimalJourneySlider);
+
 
 // ========================================================================= //
 // Google Form / Contact Submission (unchanged)
