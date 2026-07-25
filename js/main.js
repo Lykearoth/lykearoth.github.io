@@ -154,45 +154,45 @@ $(document).ready(function() {
 // ========================================================================= //
 // Minimal Journey Slider
 const journeyStories = [
-    {
-        category: "COMMUNITY",
-        title: "Giving Back",
-        desc: "Supporting education and outreach in rural villages.",
+      {
+        category: "TRAINING & CAPACITY BUILDING",
+        title: "Social Media Product Marketing",
+        desc: "Empowering local Community-Based Organizations (CBOs) with digital marketing, mobile photography, and social selling skills.",
         location: "Battambang",
         year: "2024",
-        img: "https://picsum.photos/id/1015/800/1000"
+        img: "images/portfolio/training_card.png"
     },
     {
-        category: "MEDIA PRODUCTION",
-        title: "Capturing Stories",
-        desc: "Documenting meaningful moments through photography.",
+        category: "DIGITAL STORYTELLING",
+        title: "Stories of Transformation",
+        desc: "Documenting personal journeys of local women—from their roots to joining a grassroots organization, and the powerful growth that followed.",
         location: "Siem Reap",
-        year: "2025",
-        img: "https://picsum.photos/id/133/800/1000"
-    },
-    {
-        category: "TEACHING",
-        title: "Sharing Knowledge",
-        desc: "Helping students learn technology and digital skills.",
-        location: "Phnom Penh",
-        year: "2026",
-        img: "https://picsum.photos/id/201/800/1000"
-    },
-    {
-        category: "FIELD WORK",
-        title: "Village Outreach",
-        desc: "Bringing tech opportunities to remote communities.",
-        location: "Kampong Cham",
         year: "2023",
-        img: "https://picsum.photos/id/251/800/1000"
+        img: "images/portfolio/storytelling_card.png"
     },
     {
-        category: "EVENT",
-        title: "Moments That Matter",
-        desc: "Capturing energy at conferences and gatherings.",
-        location: "Singapore",
+        category: "NETWORKING & IT",
+        title: "Network Infrastructure Basics",
+        desc: "Gained hands-on experience in router configuration, Ethernet cable crimping, and local area network setup during practical lab sessions.",
+        location: "National University of Management",
+        year: "2022",
+        img: "images/portfolio/network_card.png"
+    },
+    {
+        category: "CERTIFICATION",
+        title: "Cisco Certified: IT Essentials",
+        desc: "Earned Certificate of Completion for Cisco IT Essentials, demonstrating core skills in hardware, software, and troubleshooting.",
+        location: "National University of Management",
+        year: "2022",
+        img: "images/portfolio/certificate_card.png"
+    },
+    {
+        category: "FINAL THESIS",
+        title: "Smart Face-Based Attendance System",
+        desc: "Developed and presented a final-year thesis project utilizing facial recognition technology for automated, contact-free attendance tracking.",
+        location: "National University of Management",
         year: "2025",
-        img: "https://picsum.photos/id/316/800/1000"
+        img: "images/portfolio/thesis_card.png"
     }
 ];
 
